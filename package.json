@@ -19,6 +19,7 @@
     },
     "dependencies": {
         "@inertiajs/vue3": "^1.0.15",
+        "bootstrap": "^5.3.3",
         "vue-multiselect": "^2.1.9"
     }
 }

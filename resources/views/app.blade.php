@@ -10,6 +10,8 @@
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
         <link rel="stylesheet" href="./css/style.css">
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
 
         <!-- Scripts -->
         @routes
@@ -17,6 +19,7 @@
         @inertiaHead
     </head>
     <body class="font-sans antialiased">
+    <script src="{{ asset('js/app.js') }}"></script>
         @inertia
     </body>
 </html>

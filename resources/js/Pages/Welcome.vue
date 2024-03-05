@@ -1,25 +1,38 @@
 <template>
-    <Head title="Welcome" />
+    <Head title="HOME" />
 
     <Qouter></Qouter>
+    <Link
+        :href="route('product.crear')"
+            >PUERTAS ELECTRÓNICAS</Link>
     <footer>
         <div v-if="canLogin" class="sm:fixed sm:top-0 sm:right-0 p-6 text-end">
             <Link
                 v-if="$page.props.auth.user"
                 :href="route('dashboard')"
-                >Dashboard</Link
+                >COTIZADOR</Link
+            >
+            <Link
+                v-if="$page.props.auth.user"
+                :href="route('dashboard')"
+                >COTIZACIONES</Link
+            >
+            <Link
+                v-if="$page.props.auth.user"
+                :href="route('dashboard')"
+                >CATALOGO</Link
             >
 
             <template v-else>
                 <Link
                     :href="route('login')"
-                    >Log in</Link
+                    >INICIAR SESIÓN </Link
                 >
-
+<BR></BR>
                 <Link
                     v-if="canRegister"
                     :href="route('register')"
-                    >Register</Link
+                    >REGISTRARSE</Link
                 >
             </template>
         </div>
