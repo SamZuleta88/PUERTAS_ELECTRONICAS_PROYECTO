@@ -20,9 +20,7 @@ class ProductsController extends Controller
      */
     public function create()
     {
-        $product = new Product;
-        $product->name='prueba';
-        $product->save();
+    
     }
 
     /**

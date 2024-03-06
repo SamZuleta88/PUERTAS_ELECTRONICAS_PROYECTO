@@ -14,12 +14,12 @@
             >
             <Link
                 v-if="$page.props.auth.user"
-                :href="route('dashboard')"
+                :href="route('cotizaciones')"
                 >COTIZACIONES</Link
             >
             <Link
                 v-if="$page.props.auth.user"
-                :href="route('dashboard')"
+                :href="route('catalogo')"
                 >CATALOGO</Link
             >
 

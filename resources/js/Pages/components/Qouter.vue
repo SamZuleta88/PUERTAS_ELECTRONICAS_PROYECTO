@@ -1,5 +1,5 @@
 <template>
-    cotizador
+
 </template>
 
 <script>

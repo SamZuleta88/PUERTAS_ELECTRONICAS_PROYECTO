@@ -5,6 +5,7 @@ use App\Http\Controllers\ProductsController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use App\Models\Product;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,3 +43,16 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 
 Route::get('/guardar_producto', [ProductsController::class, 'create'])->name('product.crear');
+
+Route::get('/catalogo', function () {
+    $productos = App\Models\Product::all(); // Obtener todos los productos, asegúrate de importar el modelo adecuado
+
+    return Inertia::render('Catalogo', [
+        'productos' => $productos, // Pasar los productos a la vista
+    ]);
+})->name('catalogo');
+
+Route::get('/cotizaciones', function () {
+    return Inertia::render('Cotizaciones');
+})->name('cotizaciones');
+
