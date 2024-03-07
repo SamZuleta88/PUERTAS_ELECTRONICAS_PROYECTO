@@ -2,7 +2,7 @@
     <AuthenticatedLayout>
         <template #header>
             <div class="bg-primary-dark text-white p-4 rounded-lg mb-4">
-                <h2 class="font-bold text-2xl leading-tight text-secondary">PUERTAS ELECTRÓNICAS</h2>
+                <h2 class="font-bold text-2xl leading-tight text-yellow-500">PUERTAS ELECTRÓNICAS</h2>
                 <h6 class="font-bold text-lg leading-tight">Fabricamos - Instalamos - Automatizamos.</h6>
             </div>
         </template>
@@ -133,11 +133,11 @@ export default {
 
 <style>
 .text-primary {
-    color: #000000;
+    color: #f44242;
 }
 
 .text-secondary {
-    color: #FFDE59;
+    color: #ffd736;
 }
 
 .border-secondary {

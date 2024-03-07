@@ -127,7 +127,7 @@
   
   <style scoped>
   .bg-primary {
-    background-color: #80B9FF;
+    background-color: #a5a5a5;
   }
   
   .card {
@@ -160,7 +160,7 @@
   }
   
   .btn-primary {
-    background-color: #80B9FF;
+    background-color: #4699ff;
     color: white;
     font-weight: bold;
     border: none;
