@@ -4,11 +4,7 @@
     }
 
 .logo {
-        width: auto; /* Ajusta el ancho de la imagen según sea necesario */
-        height: auto; /* Mantiene la proporción de aspecto */
+        width: 100%; /* Ajusta el ancho de la imagen según sea necesario */
+        height: 100%; /* Mantiene la proporción de aspecto */
       }
       
-.font-bold text-2xl leading-tight text-secondary{
-
-    
-}
