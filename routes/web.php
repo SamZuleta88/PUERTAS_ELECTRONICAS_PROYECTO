@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MaterialController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProductsController;
 use Illuminate\Foundation\Application;
@@ -41,7 +42,7 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
-
+/*
 Route::get('/guardar_producto', [ProductsController::class, 'create'])->name('product.crear');
 
 Route::get('/catalogo', function () {
@@ -55,4 +56,11 @@ Route::get('/catalogo', function () {
 Route::get('/cotizaciones', function () {
     return Inertia::render('Cotizaciones');
 })->name('cotizaciones');
+ */
 
+
+/* Materiales */
+Route::resource('admin/materiales', MaterialController::class);
+
+/* Productos */
+Route::resource('admin/productos', ProductsController::class);

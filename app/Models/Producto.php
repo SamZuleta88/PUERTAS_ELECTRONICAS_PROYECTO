@@ -5,14 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Material extends Model
+class Producto extends Model
 {
     use HasFactory;
 
     protected $guarded = [];
 
-    public function productos()  {
-        return $this->belongsToMany('App\Models\Producto', 'materials_productos');
+    public function materiales()  {
+        return $this->belongsToMany('App\Models\Material', 'materials_productos');
     }
 
 }

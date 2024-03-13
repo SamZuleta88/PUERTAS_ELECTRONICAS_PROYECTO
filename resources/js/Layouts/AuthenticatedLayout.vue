@@ -1,4 +1,4 @@
-<script setup>
+    <script setup>
 import { ref } from 'vue';
 import ApplicationLogo from '@/Components/ApplicationLogo.vue';
 import Dropdown from '@/Components/Dropdown.vue';
@@ -30,17 +30,17 @@ const showingNavigationDropdown = ref(false);
                             <!-- Navigation Links -->
                             <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                                 <NavLink :href="route('dashboard')" :active="route().current('dashboard')">
-                                    COTIZADOR
+                                    INICIO
                                 </NavLink>
                             </div>
                             <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                                <NavLink :href="route('cotizaciones')" :active="route().current('cotizaciones')">
-                                    COTIZACIONES
+                                <NavLink :href="route('materiales.index')" :active="route().current('materiales.index')">
+                                    MATERIALES
                                 </NavLink>
                             </div>
                             <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                                <NavLink :href="route('catalogo')" :active="route().current('catalogo')">
-                                    CATÁLOGO
+                                <NavLink :href="route('productos.index')" :active="route().current('productos.index')">
+                                    PRODUCTOS
                                 </NavLink>
                             </div>
                         </div>
@@ -153,7 +153,7 @@ const showingNavigationDropdown = ref(false);
                 </div>
             </header>
 
-        
+
 
             <!-- Page Content -->
             <main>
