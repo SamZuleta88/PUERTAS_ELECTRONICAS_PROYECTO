@@ -1,112 +1,156 @@
 <template>
-
     <AuthenticatedLayout>
-        <div>
-            <h2>Editar Material</h2>
-            <Link :href="route('materiales.index')">
-                <button>Regresar</button>
-            </Link>
+      <div class="admin-header">
+        <h2>Editar Material</h2>
+        <Link :href="route('materiales.index')">
+          <button class="admin-header-button">Regresar</button>
+        </Link>
+      </div>
+      <form @submit.prevent="submit">
+        <div class="space-y-6">
+          <div>
+            <InputLabel for="nombre" value="Nombre" />
+            <TextInput
+              id="nombre"
+              ref="nombreInput"
+              v-model="form.nombre"
+              type="text"
+              class="block w-full"
+              autocomplete="nombre-input"
+            />
+            <InputError :message="form.errors.nombre" class="mt-2" />
+          </div>
+          <div>
+            <InputLabel for="valor" value="Valor" />
+            <TextInput
+              id="valor"
+              ref="valorInput"
+              v-model="form.valor"
+              type="text"
+              class="block w-full"
+              autocomplete="valor-input"
+            />
+            <InputError :message="form.errors.valor" class="mt-2" />
+          </div>
         </div>
-        <form @submit.prevent="submit">
-            <div class="space-y-6">
-                <div>
-                    <InputLabel for="nombre" value="nombre" />
-
-                    <TextInput
-                        id="nombre"
-                        ref="nombreInput"
-                        v-model="form.nombre"
-                        type="text"
-                        class="block w-full"
-                        autocomplete="nombre-input"
-                    />
-
-                    <InputError :message="form.errors.nombre" class="mt-2" />
-                </div>
-
-            </div>
-            <div class="space-y-6">
-                <div>
-                    <InputLabel for="valor" value="valor" />
-
-                    <TextInput
-                        id="valor"
-                        ref="valorInput"
-                        v-model="form.valor"
-                        type="text"
-                        class="block w-full"
-                        autocomplete="valor-input"
-                    />
-
-                    <InputError :message="form.errors.valor" class="mt-2" />
-                </div>
-
-            </div>
-
-
-            <div class="omt-8">
-                <button type="submit" class="basic-succes-btn">ACTAULIZAR MATERIAL</button>
-            </div>
-        </form>
+        <div class="mt-8">
+          <button type="submit" class="update-button">ACTUALIZAR MATERIAL</button>
+        </div>
+      </form>
     </AuthenticatedLayout>
-
-</template>
-
-<script>
-
-import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-import { Link } from '@inertiajs/vue3';
-import InputError from '@/Components/InputError.vue';
-import InputLabel from '@/Components/InputLabel.vue';
-import TextInput from '@/Components/TextInput.vue';
-import { useForm } from '@inertiajs/vue3';
-
-export default {
-
+  </template>
+  
+  <script>
+  import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
+  import { Link } from '@inertiajs/vue3';
+  import InputError from '@/Components/InputError.vue';
+  import InputLabel from '@/Components/InputLabel.vue';
+  import TextInput from '@/Components/TextInput.vue';
+  import { useForm } from '@inertiajs/vue3';
+  
+  export default {
     components: {
-        AuthenticatedLayout,
-        Link,
-        InputError,
-        InputLabel,
-        TextInput,
+      AuthenticatedLayout,
+      Link,
+      InputError,
+      InputLabel,
+      TextInput,
     },
-
+  
     data() {
-        return {
-            form: useForm({
-                nombre: "",
-                valor: "",
-            })
-        };
+      return {
+        form: useForm({
+          nombre: '',
+          valor: '',
+        }),
+      };
     },
-
+  
     props: {
-        materiale: Object
+      materiale: Object,
     },
-
+  
     mounted() {
-        this.form.nombre = this.materiale.nombre;
-        this.form.valor = this.materiale.valor;
+      this.form.nombre = this.materiale.nombre;
+      this.form.valor = this.materiale.valor;
     },
-
+  
     methods: {
-
-        submit() {
-            this.form.put(route('materiales.update', this.materiale), this.form, {
-                preserveScroll: true,
-                forceFormData: true,
-                onSuccess: () => this.form.reset(),
-                onError: () => {
-                    if (this.form.errors.nombre) {
-                        this.form.reset('nombre');
-                    }
-                    if (this.form.errors.valor) {
-                        this.form.reset('valor');
-                    }
-                },
-            });
-        },
+      submit() {
+        this.form.put(route('materiales.update', this.materiale), this.form, {
+          preserveScroll: true,
+          forceFormData: true,
+          onSuccess: () => this.form.reset(),
+          onError: () => {
+            if (this.form.errors.nombre) {
+              this.form.reset('nombre');
+            }
+            if (this.form.errors.valor) {
+              this.form.reset('valor');
+            }
+          },
+        });
+      },
     },
-}
-
-</script>
+  };
+  </script>
+  
+  <style>
+  /* Encabezado */
+  .admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #f2f2f2;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .admin-header h2 {
+    margin: 0;
+    font-size: 24px;
+  }
+  
+  .admin-header-button {
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .admin-header-button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Botón de Actualizar */
+  .update-button {
+    padding: 8px 16px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .update-button:hover {
+    background-color: #218838;
+  }
+  
+  /* Formulario */
+  form {
+    margin-top: 20px;
+  }
+  
+  .space-y-6 > div {
+    margin-bottom: 24px;
+  }
+  
+  .mt-8 {
+    margin-top: 64px;
+  }
+  </style>
+  

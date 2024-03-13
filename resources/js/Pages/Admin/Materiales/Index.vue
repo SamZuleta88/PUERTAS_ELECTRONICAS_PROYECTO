@@ -21,10 +21,12 @@
                     <td>{{ material.nombre }}</td>
                     <td>{{ material.valor }}</td>
                     <td>
+                    <div class="button-container">
                         <Link :href="route('materiales.edit', material)">
-                            <button>Editar</button>
+                            <button class="edit-button">Editar</button>
                         </Link>
-                        <button @click="eliminarMaterial(material)">Eliminar</button>
+                        <button @click="eliminarMaterial(material)" class="delete-button">Eliminar</button>
+                    </div>
                     </td>
                 </tr>
             </tbody>

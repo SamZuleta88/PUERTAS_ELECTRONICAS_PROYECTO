@@ -33,12 +33,14 @@
                         </ul>
                     </td>
                     <td>
-                        <Link :href="route('productos.edit', producto)">
-                            <button>Edit</button>
-                        </Link>
-                        <button @click="deleteProducto(producto)">Delete</button>
+                        <div class="button-container">
+                            <Link :href="route('productos.edit', producto)">
+                                <button class="edit-button">Editar</button>
+                            </Link>
+                            <button @click="deleteProducto(producto)" class="delete-button">Eliminar</button>
+                        </div>
                     </td>
-                </tr>
+                 </tr>
             </tbody>
         </table>
 
