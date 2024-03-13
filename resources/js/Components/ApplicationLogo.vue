@@ -1,6 +1,6 @@
 <template>
     <div>
-      LOGO AQUÍ. <!--  <img class="logo" :src="logoUrl" alt="Logo aplicación"> -->
+      <img class="logo" :src="logoUrl" alt="Logo aplicación">
     </div>
   </template>
   
