@@ -20,7 +20,7 @@
             <tbody>
                 <tr v-for="producto in productos">
                     <td>{{ producto.id }}</td>
-                    <td>{{ producto.name }}</td>
+                    <td>{{ producto.nombre }}</td>
                     <td>
                         <div class="portrait">
                             <img v-if="producto.imagen" :src="producto.imagen" alt="producto Logo" width="50px" height="50px" class="m-auto" />
@@ -82,6 +82,7 @@ export default {
                 preserveState: true,
             });
         },
+
     },
 }
 

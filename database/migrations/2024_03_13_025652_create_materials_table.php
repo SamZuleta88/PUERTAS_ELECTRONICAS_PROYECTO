@@ -16,6 +16,7 @@ return new class extends Migration
 
             $table->string('nombre');
             $table->double('valor', 16, 5);
+            $table->string('formula');
 
             $table->timestamps();
         });

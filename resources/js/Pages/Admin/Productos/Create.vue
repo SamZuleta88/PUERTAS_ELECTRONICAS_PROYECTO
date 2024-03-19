@@ -57,7 +57,22 @@
 
                     <InputError :message="form.errors.descripcion" class="mt-2" />
                 </div>
+            </div>
+            <div class="space-y-6">
+                <div>
+                    <InputLabel for="mano_de_obra" value="mano_de_obra" />
 
+                    <TextInput
+                        id="mano_de_obra"
+                        ref="mano_de_obraInput"
+                        v-model="form.mano_de_obra"
+                        type="text"
+                        class="block w-full"
+                        autocomplete="mano_de_obra-input"
+                    />
+
+                    <InputError :message="form.errors.mano_de_obra" class="mt-2" />
+                </div>
             </div>
 
             <div class="omt-8">
@@ -99,6 +114,7 @@ export default {
                 nombre: "",
                 imagen: null,
                 descripcion: null,
+                mano_de_obra: null,
                 materiales: null,
             })
         };
@@ -118,6 +134,9 @@ export default {
                     }
                     if (this.form.errors.descripcion) {
                         this.form.reset('descripcion');
+                    }
+                    if (this.form.errors.mano_de_obra) {
+                        this.form.reset('mano_de_obra');
                     }
                     if (this.form.errors.materiales) {
                         this.form.reset('materiales');

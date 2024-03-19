@@ -32,6 +32,26 @@
             />
             <InputError :message="form.errors.valor" class="mt-2" />
           </div>
+          <p>
+
+                El Ancho se representa con una <b>A</b>
+                El Alto se representa con una  <b>B</b>
+
+            </p>
+          <div class="space-y-6">
+                <div>
+                    <InputLabel for="formula" value="Formula del matrial segun el metraje" />
+                    <TextInput
+                        id="formula"
+                        ref="formulaInput"
+                        v-model="form.formula"
+                        type="text"
+                        class="block w-full"
+                        autocomplete="formula-input"
+                    />
+                    <InputError :message="form.errors.formula" class="mt-2" />
+                </div>
+            </div>
         </div>
         <div class="mt-8">
           <button type="submit" class="update-button">ACTUALIZAR MATERIAL</button>
@@ -39,7 +59,7 @@
       </form>
     </AuthenticatedLayout>
   </template>
-  
+
   <script>
   import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
   import { Link } from '@inertiajs/vue3';
@@ -47,7 +67,7 @@
   import InputLabel from '@/Components/InputLabel.vue';
   import TextInput from '@/Components/TextInput.vue';
   import { useForm } from '@inertiajs/vue3';
-  
+
   export default {
     components: {
       AuthenticatedLayout,
@@ -56,25 +76,27 @@
       InputLabel,
       TextInput,
     },
-  
+
     data() {
       return {
         form: useForm({
           nombre: '',
           valor: '',
+          formula: '',
         }),
       };
     },
-  
+
     props: {
       materiale: Object,
     },
-  
+
     mounted() {
       this.form.nombre = this.materiale.nombre;
       this.form.valor = this.materiale.valor;
+      this.form.formula = this.materiale.formula;
     },
-  
+
     methods: {
       submit() {
         this.form.put(route('materiales.update', this.materiale), this.form, {
@@ -88,13 +110,16 @@
             if (this.form.errors.valor) {
               this.form.reset('valor');
             }
+            if (this.form.errors.formula) {
+              this.form.reset('formula');
+            }
           },
         });
       },
     },
   };
   </script>
-  
+
   <style>
   /* Encabezado */
   .admin-header {
@@ -105,12 +130,12 @@
     background-color: #f2f2f2;
     border-bottom: 1px solid #ccc;
   }
-  
+
   .admin-header h2 {
     margin: 0;
     font-size: 24px;
   }
-  
+
   .admin-header-button {
     padding: 8px 16px;
     background-color: #007bff;
@@ -120,11 +145,11 @@
     cursor: pointer;
     transition: background-color 0.3s;
   }
-  
+
   .admin-header-button:hover {
     background-color: #0056b3;
   }
-  
+
   /* Botón de Actualizar */
   .update-button {
     padding: 8px 16px;
@@ -135,22 +160,21 @@
     cursor: pointer;
     transition: background-color 0.3s;
   }
-  
+
   .update-button:hover {
     background-color: #218838;
   }
-  
+
   /* Formulario */
   form {
     margin-top: 20px;
   }
-  
+
   .space-y-6 > div {
     margin-bottom: 24px;
   }
-  
+
   .mt-8 {
     margin-top: 64px;
   }
   </style>
-  

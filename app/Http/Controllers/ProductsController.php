@@ -48,6 +48,7 @@ class ProductsController extends Controller
         $producto->nombre = $data['nombre'];
         $producto->imagen = $data['imagen'];
         $producto->descripcion = $data['descripcion'];
+        $producto->mano_de_obra = $data['mano_de_obra'];
 
         $producto->save();
 
@@ -94,6 +95,8 @@ class ProductsController extends Controller
 
         $producto->nombre = $data['nombre'];
         $producto->imagen = $data['imagen'];
+        $producto->descripcion = $data['descripcion'];
+        $producto->mano_de_obra = $data['mano_de_obra'];
 
         $producto->update();
 

@@ -13,44 +13,39 @@
                     <div class="flex gap-4">
                         <div>
                             <label for="producto" class="block font-semibold text-sm text-gray-700">Producto</label>
-                            <select v-model="producto" id="producto" class="block w-full mt-1 border border-secondary rounded-lg focus:outline-none focus:ring focus:border-primary">
+                            <select v-model="form.producto" id="producto" class="block w-full mt-1 border border-secondary rounded-lg focus:outline-none focus:ring focus:border-primary">
                                 <option value="">Selecciona un producto</option>
-                                <option v-for="product in aProductos" :key="product.id" :value="product">{{ product.value }}</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label for="material" class="block font-semibold text-sm text-gray-700">Material</label>
-                            <select v-model="material" id="material" class="block w-full mt-1 border border-secondary rounded-lg focus:outline-none focus:ring focus:border-primary">
-                                <option value="">Selecciona un material</option>
-                                <option v-for="material in aMateriales" :key="material.id" :value="material">{{ material.value }}</option>
+                                <option v-for="producto in productos" :key="producto.id" :value="producto">{{ producto.nombre }}</option>
                             </select>
                         </div>
                         <div>
                             <label for="ancho" class="block font-semibold text-sm text-gray-700">Ancho</label>
-                            <input type="number" v-model="ancho" id="ancho" placeholder="Ancho" class="block w-full mt-1 border border-secondary rounded-lg focus:outline-none focus:ring focus:border-primary">
+                            <input type="number" v-model="form.ancho" id="ancho" placeholder="Ancho" class="block w-full mt-1 border border-secondary rounded-lg focus:outline-none focus:ring focus:border-primary">
                         </div>
                         <div>
                             <label for="alto" class="block font-semibold text-sm text-gray-700">Alto</label>
-                            <input type="number" v-model="alto" id="alto" placeholder="Alto" class="block w-full mt-1 border border-secondary rounded-lg focus:outline-none focus:ring focus:border-primary">
+                            <input type="number" v-model="form.alto" id="alto" placeholder="Alto" class="block w-full mt-1 border border-secondary rounded-lg focus:outline-none focus:ring focus:border-primary">
                         </div>
+                        <button @click="calcularTotales()">Cotizar</button>
                     </div>
+
                     <div class="bg-primary-light text-white p-4 rounded-lg shadow-md">
                         <div class="text-lg font-semibold mb-4">Detalles del pedido</div>
-                        <div class="flex justify-between">
+                        <div class="flex justify-between" v-if="form.producto">
                             <div>Producto:</div>
-                            <div>{{ producto.value }}</div>
-                        </div>
-                        <div class="flex justify-between">
-                            <div>Material:</div>
-                            <div>{{ material.value }}</div>
+                            <div>{{ form.producto.nombre }}</div>
                         </div>
                         <div class="flex justify-between">
                             <div>Ancho:</div>
-                            <div>{{ ancho }}</div>
+                            <div>{{ form.ancho }} m</div>
                         </div>
                         <div class="flex justify-between">
                             <div>Alto:</div>
-                            <div>{{ alto }}</div>
+                            <div>{{ form.alto }} m</div>
+                        </div>
+                        <div class="flex justify-between" v-for="detalle in form.detalles">
+                            <div>{{ detalle.material }} : {{ detalle.formula }}</div>
+                            <div>$ {{ formatoPuntos(detalle.total) }}</div>
                         </div>
                         <hr class="my-4">
                         <div class="flex justify-between">
@@ -67,6 +62,7 @@
 <script>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Head } from '@inertiajs/vue3';
+import { useForm } from '@inertiajs/vue3';
 
 export default {
     components: {
@@ -76,56 +72,77 @@ export default {
 
     data() {
         return {
-            producto: '',
-            aProductos: [{id: 1, value: 'Ventana'}, {id: 2, value: 'Puerta'}],
-            material: '',
-            aMateriales: [{id: 1, value: 'Aluminio'}, {id: 2, value: 'Otro'}],
-            ancho: 0,
-            alto: 0,
-            total: 0
+
+            form: useForm({
+                producto: '',
+                ancho: 0,
+                alto: 0,
+                total: 0,
+                detalles: [],
+            })
         };
     },
 
-    watch: {
-        producto() {
-            this.calculototal();
-        },
-
-        material() {
-            this.calculototal();
-        },
-
-        ancho() {
-            this.calculototal();
-        },
-
-        alto() {
-            this.calculototal();
-        },
+    props: {
+        productos: Object,
     },
 
     computed: {
         totalFor() {
-            return this.formatoPuntos(this.total);
+            return this.formatoPuntos(this.form.total);
         }
     },
 
     methods: {
-        calculototal() {
-            if (this.producto.id == 1) {
-                this.total = 3000;
-                if (this.material.id == 1) {
-                    this.total = this.total + (1500 * this.ancho * this.alto);
-                }
-            }
-        },
 
         formatoPuntos(numero) {
             const partes = numero.toString().split('.');
             let parteEntera = partes[0];
-            const parteDecimal = partes.length > 1 ? '.' + partes[1] : '';
             parteEntera = parteEntera.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
-            return parteEntera + parteDecimal;
+
+            return parteEntera;
+        },
+
+        calcularTotales() {
+
+            this.form.detalles = [];
+            this.form.total = 0;
+
+            if (this.form.producto) {
+
+                const A = this.form.ancho;
+                const B = this.form.alto;
+
+                this.form.producto.materiales.forEach(element => {
+
+                    const totalMaterialValor = element.valor * eval(element.formula);
+
+                    this.form.total += totalMaterialValor;
+
+                    this.form.detalles.push(
+                        {
+                            material: element.nombre,
+                            formula: `${element.valor} * ${element.formula}`,
+                            total: totalMaterialValor,
+                        }
+                    )
+
+                });
+
+                const manoDeObra = this.form.total * (this.form.producto.mano_de_obra / 100);
+
+                this.form.detalles.push(
+                    {
+                        material: 'Mano de Obra',
+                        formula: `${this.form.total} * ${this.form.producto.mano_de_obra} %`,
+                        total: manoDeObra,
+                    }
+                )
+
+                this.form.total += manoDeObra
+
+            }
+
         }
     }
 }

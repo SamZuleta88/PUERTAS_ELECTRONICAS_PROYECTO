@@ -25,6 +25,7 @@ class StoreRequest extends FormRequest
             'nombre' => 'required',
             'materiales' => 'required',
             'descripcion' => 'required',
+            'mano_de_obra' => 'required',
             'imagen' => 'required|image|mimes:jpeg,png,jpg,gif',
         ];
     }

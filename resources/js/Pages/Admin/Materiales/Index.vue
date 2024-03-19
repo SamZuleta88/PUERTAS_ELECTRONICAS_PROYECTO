@@ -13,6 +13,7 @@
                 <th>id</th>
                 <th>name</th>
                 <th>valor</th>
+                <th>formula</th>
                 <th>actions</th>
             </thead>
             <tbody>
@@ -20,6 +21,7 @@
                     <td>{{ material.id }}</td>
                     <td>{{ material.nombre }}</td>
                     <td>{{ material.valor }}</td>
+                    <td>{{ material.formula }}</td>
                     <td>
                     <div class="button-container">
                         <Link :href="route('materiales.edit', material)">

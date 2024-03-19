@@ -25,6 +25,7 @@
                 </div>
 
             </div>
+
             <div class="space-y-6">
                 <div>
                     <InputLabel for="valor" value="valor" />
@@ -43,6 +44,29 @@
 
             </div>
 
+            <p>
+
+                El Ancho se representa con una <b>A</b>
+                El Alto se representa con una  <b>B</b>
+
+            </p>
+            <div class="space-y-6">
+                <div>
+                    <InputLabel for="formula" value="Formula del matrial segun el metraje" />
+
+                    <TextInput
+                        id="formula"
+                        ref="formulaInput"
+                        v-model="form.formula"
+                        type="text"
+                        class="block w-full"
+                        autocomplete="formula-input"
+                    />
+
+                    <InputError :message="form.errors.formula" class="mt-2" />
+                </div>
+
+            </div>
 
             <div class="omt-8">
                 <button type="submit" class="basic-succes-btn">CREAR MATERIAL</button>
@@ -76,6 +100,7 @@ export default {
             form: useForm({
                 nombre: "",
                 valor: "",
+                formula: "",
             })
         };
     },
@@ -91,6 +116,9 @@ export default {
                     }
                     if (this.form.errors.valor) {
                         this.form.reset('valor');
+                    }
+                    if (this.form.errors.formula) {
+                        this.form.reset('formula');
                     }
                 },
             });

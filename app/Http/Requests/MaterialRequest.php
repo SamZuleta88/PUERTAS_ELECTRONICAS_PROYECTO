@@ -24,6 +24,7 @@ class MaterialRequest extends FormRequest
         return [
             'nombre' => 'required|string',
             'valor' => 'required',
+            'formula' => 'required',
         ];
     }
 }

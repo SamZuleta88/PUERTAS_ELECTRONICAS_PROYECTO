@@ -4,9 +4,9 @@
     }
 
 .logo {
-        width: 100%; /* Ajusta el ancho de la imagen según sea necesario */
-        height: 100%; /* Mantiene la proporción de aspecto */
-      }
+    width: auto !important; /* Ajusta el ancho de la imagen según sea necesario */
+    height: 40px !important; /* Mantiene la proporción de aspecto */
+}
 
 
 /* MATERIALES (INDEX) */
@@ -87,5 +87,5 @@ tbody tr:hover {
     background-color: #0056b3;
 }
 
-/* FIN INDEX */ 
+/* FIN INDEX */
 

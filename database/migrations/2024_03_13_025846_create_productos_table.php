@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('nombre');
             $table->string('imagen');
             $table->string('descripcion');
+            $table->double('mano_de_obra', 16, 5);
 
             $table->timestamps();
         });
