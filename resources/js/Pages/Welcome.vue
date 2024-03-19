@@ -1,4 +1,5 @@
 <template>
+  
 <nav class="navbar" style="background-color: #80B9FF;">
   <div class="container mx-auto px-4">
     <div class="flex justify-between items-center py-4">
@@ -53,7 +54,6 @@
 
 <script setup>
 import { ref } from 'vue';
-
 const showingNavigationDropdown = ref(false);
 </script>
 
