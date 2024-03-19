@@ -1,104 +1,81 @@
 <template>
-<nav class="navbar" style="background-color: #80B9FF;">
-  <div class="container mx-auto px-4">
-    <div class="flex justify-between items-center py-4">
-      <div>
-        <div class="logo" style="display: flex; align-items: center; color: #fff; text-decoration: none;">
-          <img src="/images/PUERTAS_LOGO.jpg" alt="Logo" style="width: 40px; height: auto; margin-right: 8px;">
+
+    <AuthenticatedLayout>
+        <div id="carouselExampleDark" class="carousel carousel-dark slide">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active" data-bs-interval="10000">
+                    <img src="../images/PORTON-ENTRADA-3.jpg" alt="#">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>First slide label</h5>
+                    <p>Some representative placeholder content for the first slide.</p>
+                </div>
+                </div>
+                <div class="carousel-item" data-bs-interval="2000">
+                    <img src="../images/PUERTA-ALUMINIO-7.jpg" alt="#">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Second slide label</h5>
+                    <p>Some representative placeholder content for the second slide.</p>
+                </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="../images/PUERTAS_LOGO.jpg" alt="#">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Third slide label</h5>
+                    <p>Some representative placeholder content for the third slide.</p>
+                </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
         </div>
-      </div>
-      <div class="flex space-x-4 justify-end w-full">
-        <a href="#" class="text-lg">Cotizador</a>
-        <a href="#" class="text-lg">Cotizaciones</a>
-        <a href="#" class="text-lg">Catálogo</a>
-      </div>
-      <div class="flex items-center space-x-4">
-        <button @click="showingNavigationDropdown = !showingNavigationDropdown" class="text-lg focus:outline-none">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-          </svg>
-        </button>
-      </div>
-    </div>
-  </div>
-</nav>
-
-
-<div v-if="showingNavigationDropdown" class="absolute bg-gray-100 border border-gray-200 mt-2 py-2 px-4 rounded-lg right-0 z-10">
-  <a href="/login" class="text-lg block">Iniciar sesión</a>
-  <a href="/register" class="text-lg block">Registrarse</a>
-</div>
-
-
-
-  <main class="container mx-auto px-4">
-    <div class="text-center py-8">
-      <h1 class="text-3xl font-bold mb-4">Bienvenido a Puertas Electrónicas</h1>
-      <p class="text-lg">Descubre nuestro catálogo de productos y crea cotizaciones personalizadas.</p>
-    </div>
-  </main>
-
-  <footer class="text-center py-4" style="background-color: #80B9FF; color: #fff;">
-  <div class="container mx-auto px-4">
-    <p class="text-lg">&copy; 2024 Puertas Electrónicas. Todos los derechos reservados.</p>
-    <div class="flex justify-center mt-4">
-      <a href="#" class="mx-2">Términos y condiciones</a>
-      <span>|</span>
-      <a href="#" class="mx-2">Política de privacidad</a>
-    </div>
-  </div>
-</footer>
+    </AuthenticatedLayout>
 
 </template>
 
-<script setup>
-import { ref } from 'vue';
+<script>
 
-const showingNavigationDropdown = ref(false);
+import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
+import { Link } from '@inertiajs/vue3';
+import { Inertia } from "@inertiajs/inertia"
+
+export default {
+
+    components: {
+        AuthenticatedLayout,
+        Link,
+    },
+
+}
+
 </script>
 
-<style>
-/* Estilos para el navbar */
+<style scoped>
 
-.navbar {
-  background-color: #80B9FF;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+#carouselExampleDark {
+    height: 70vh;
+    overflow: hidden;
 }
 
-.navbar a {
-  color: #fff;
-  text-decoration: none;
-  padding: 0.5rem 1rem;
-  border-radius: 8px; /* Bordes redondeados */
-  transition: background-color 0.3s; /* Transición suave de color de fondo */
+.carousel-item {
+    height: 70vh;
+    width: 100%;
 }
 
-.navbar a:hover {
-  background-color: #FFDE59; /* Cambio de color al pasar el cursor */
+img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
 }
 
-
-.logo {
-  display: flex;
-  align-items: center;
-  color: #fff;
-  text-decoration: none;
-}
-
-.logo img {
-  width: 40px;
-  height: auto;
-  margin-right: 8px;
-}
-
-/* Estilos para el contenido principal */
-main {
-  min-height: calc(100vh - 232px); /* Ajusta según el tamaño de tu navbar y footer */
-}
-
-/* Estilos para el footer */
-footer {
-  background-color: #80B9FF;
-  color: #fff;
-}
 </style>
