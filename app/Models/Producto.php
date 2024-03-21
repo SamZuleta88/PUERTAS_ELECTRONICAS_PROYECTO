@@ -15,4 +15,8 @@ class Producto extends Model
         return $this->belongsToMany('App\Models\Material', 'materials_productos');
     }
 
+    public function cotizaciones()  {
+        return $this->hasMany('App\Models\Cotizacion');
+    }
+
 }
