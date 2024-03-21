@@ -26,7 +26,7 @@
 
             </div>
             <div class="my-4 mt-6">
-                <label for="imagen" class="basic-fouth-btn ">SUbir imagen</label>
+                <label for="imagen" class="basic-fouth-btn ">Subir imagen</label>
                 <input type="file" id="imagen" name="imagen" hidden
                     @input="form.imagen = $event.target.files[0]"/>
             </div>
@@ -159,3 +159,81 @@ export default {
 }
 
 </script>
+
+<style>
+/* Encabezado */
+.admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #f2f2f2;
+    border-bottom: 1px solid #ccc;
+}
+
+.admin-header h2 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.admin-header button {
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.admin-header button:hover {
+    background-color: #0056b3;
+}
+
+/* Tabla */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tbody tr:hover {
+    background-color: #f0f0f0;
+}
+
+/* Botones */
+.button-container {
+    display: flex;
+    align-items: center;
+}
+
+.edit-button,
+.delete-button {
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 5px;
+    transition: background-color 0.3s;
+}
+
+.edit-button:hover,
+.delete-button:hover {
+    background-color: #0056b3;
+}
+</style>

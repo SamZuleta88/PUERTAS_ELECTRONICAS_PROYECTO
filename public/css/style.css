@@ -3,13 +3,13 @@
         background-color: rgb(232, 35, 121);
     }
 
-.logo {
+    .logo {
         width: 100%; /* Ajusta el ancho de la imagen según sea necesario */
         height: 100%; /* Mantiene la proporción de aspecto */
       }
 
 
-/* MATERIALES (INDEX) */
+
 
 /* Encabezado */
 .admin-header {

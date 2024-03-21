@@ -120,23 +120,23 @@
   };
   </script>
 
-  <style>
-  /* Encabezado */
-  .admin-header {
+<style>
+/* Encabezado */
+.admin-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px;
     background-color: #f2f2f2;
     border-bottom: 1px solid #ccc;
-  }
+}
 
-  .admin-header h2 {
+.admin-header h2 {
     margin: 0;
     font-size: 24px;
-  }
+}
 
-  .admin-header-button {
+.admin-header button {
     padding: 8px 16px;
     background-color: #007bff;
     color: white;
@@ -144,37 +144,56 @@
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
-  }
+}
 
-  .admin-header-button:hover {
+.admin-header button:hover {
     background-color: #0056b3;
-  }
+}
 
-  /* Botón de Actualizar */
-  .update-button {
+/* Tabla */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tbody tr:hover {
+    background-color: #f0f0f0;
+}
+
+/* Botones */
+.button-container {
+    display: flex;
+    align-items: center;
+}
+
+.edit-button,
+.delete-button {
     padding: 8px 16px;
-    background-color: #28a745;
+    background-color: #007bff;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    margin-right: 5px;
     transition: background-color 0.3s;
-  }
+}
 
-  .update-button:hover {
-    background-color: #218838;
-  }
-
-  /* Formulario */
-  form {
-    margin-top: 20px;
-  }
-
-  .space-y-6 > div {
-    margin-bottom: 24px;
-  }
-
-  .mt-8 {
-    margin-top: 64px;
-  }
-  </style>
+.edit-button:hover,
+.delete-button:hover {
+    background-color: #0056b3;
+}
+</style>

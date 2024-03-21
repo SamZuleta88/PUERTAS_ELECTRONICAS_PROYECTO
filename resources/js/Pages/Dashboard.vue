@@ -148,7 +148,13 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+
+.logo {
+        width: 100%; /* Ajusta el ancho de la imagen según sea necesario */
+        height: 100%; /* Mantiene la proporción de aspecto */
+      }
+      
 .text-primary {
     color: #f44242;
 }
