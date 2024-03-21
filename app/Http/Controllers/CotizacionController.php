@@ -39,8 +39,8 @@ class CotizacionController extends Controller
         $cotizacion = new Cotizacion();
 
         $cotizacion->producto_id = $data['producto']['id'];
-        $cotizacion->ancho = $data['ancho'];
-        $cotizacion->alto = $data['alto'];
+        $cotizacion->ancho = floatval($data['ancho']);
+        $cotizacion->alto = floatval($data['alto']);
         $cotizacion->total = $data['total'];
         $cotizacion->user_id = auth()->user()->id;
 

@@ -20,11 +20,11 @@
                         </div>
                         <div>
                             <label for="ancho" class="block font-semibold text-sm text-gray-700">Ancho</label>
-                            <input type="number" v-model="form.ancho" id="ancho" placeholder="Ancho" class="block w-full mt-1 border border-secondary rounded-lg focus:outline-none focus:ring focus:border-primary">
+                            <input type="text" step="0.01" pattern="\d+(\.\d{1,2})?" v-model="form.ancho" id="ancho" placeholder="Ancho" class="block w-full mt-1 border border-secondary rounded-lg focus:outline-none focus:ring focus:border-primary">
                         </div>
                         <div>
                             <label for="alto" class="block font-semibold text-sm text-gray-700">Alto</label>
-                            <input type="number" v-model="form.alto" id="alto" placeholder="Alto" class="block w-full mt-1 border border-secondary rounded-lg focus:outline-none focus:ring focus:border-primary">
+                            <input type="text" step="0.01" pattern="\d+(\.\d{1,2})?" v-model="form.alto" id="alto" placeholder="Alto" class="block w-full mt-1 border border-secondary rounded-lg focus:outline-none focus:ring focus:border-primary">
                         </div>
                         <span class="cotizar-btn" @click="calcularTotales()">Cotizar</span>
                     </div>
@@ -113,8 +113,8 @@ export default {
 
             if (this.form.producto) {
 
-                const A = this.form.ancho;
-                const B = this.form.alto;
+                const A = parseFloat(this.form.ancho);
+                const B = parseFloat(this.form.alto);
 
                 this.form.producto.materiales.forEach(element => {
 
