@@ -13,4 +13,12 @@
     },
   };
   </script>
+<style>
+
+.logo {
+  width: 100%; /* Ajusta el ancho de la imagen según sea necesario */
+  height: 100%; /* Mantiene la proporción de aspecto */
+}
+</style>
+
   
