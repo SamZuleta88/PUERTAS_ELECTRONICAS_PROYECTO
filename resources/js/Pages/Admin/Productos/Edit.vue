@@ -1,17 +1,15 @@
 <template>
-
     <AuthenticatedLayout>
         <div>
             <h2>Editar Material</h2>
             <Link :href="route('materiales.index')">
-                <button>Regresar</button>
+                <button class="admin-header-button">Regresar</button>
             </Link>
         </div>
         <form @submit.prevent="submit">
             <div class="space-y-6">
                 <div>
                     <InputLabel for="nombre" value="nombre" />
-
                     <TextInput
                         id="nombre"
                         ref="nombreInput"
@@ -20,15 +18,12 @@
                         class="block w-full"
                         autocomplete="nombre-input"
                     />
-
                     <InputError :message="form.errors.nombre" class="mt-2" />
                 </div>
-
             </div>
             <div class="my-4 mt-6">
-                <label for="imagen" class="basic-fouth-btn ">Subir imagen</label>
-                <input type="file" id="imagen" name="imagen" hidden
-                    @input="form.imagen = $event.target.files[0]"/>
+                <label for="imagen" class="basic-fouth-btn">Subir imagen</label>
+                <input type="file" id="imagen" name="imagen" hidden @input="form.imagen = $event.target.files[0]"/>
             </div>
             <div class="space-y-6">
                 <label class="typo__label">Materiale(s) *</label>
@@ -45,7 +40,6 @@
             <div class="space-y-6">
                 <div>
                     <InputLabel for="descripcion" value="descripcion" />
-
                     <TextInput
                         id="descripcion"
                         ref="descripcionInput"
@@ -54,15 +48,12 @@
                         class="block w-full"
                         autocomplete="descripcion-input"
                     />
-
                     <InputError :message="form.errors.descripcion" class="mt-2" />
                 </div>
-
             </div>
             <div class="space-y-6">
                 <div>
                     <InputLabel for="mano_de_obra" value="mano_de_obra" />
-
                     <TextInput
                         id="mano_de_obra"
                         ref="mano_de_obraInput"
@@ -71,21 +62,17 @@
                         class="block w-full"
                         autocomplete="mano_de_obra-input"
                     />
-
                     <InputError :message="form.errors.mano_de_obra" class="mt-2" />
                 </div>
             </div>
-
             <div class="omt-8">
                 <button type="submit" class="basic-succes-btn">ACTUALIZAR MATERIAL</button>
             </div>
         </form>
     </AuthenticatedLayout>
-
 </template>
 
 <script>
-
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Link } from '@inertiajs/vue3';
 import Multiselect from 'vue-multiselect'
@@ -95,7 +82,6 @@ import TextInput from '@/Components/TextInput.vue';
 import { useForm } from '@inertiajs/vue3';
 
 export default {
-
     components: {
         AuthenticatedLayout,
         Link,
@@ -157,7 +143,6 @@ export default {
         },
     },
 }
-
 </script>
 
 <style>
@@ -236,4 +221,33 @@ tbody tr:hover {
 .delete-button:hover {
     background-color: #0056b3;
 }
+
+.basic-fouth-btn {
+    padding: 8px 16px;
+    background-color: #dc3545; /* Color rojo */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.basic-fouth-btn:hover {
+    background-color: #c82333; /* Color rojo oscuro */
+}
+
+.basic-succes-btn {
+    padding: 8px 16px;
+    background-color: #28a745; /* Color verde */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.basic-succes-btn:hover {
+    background-color: #218838; /* Color verde oscuro */
+}
 </style>
+

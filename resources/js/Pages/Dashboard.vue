@@ -55,7 +55,7 @@
                     </div>
                 </div>
                 <div class="pt-3">
-                    <button class="cotizar-btn" type="submit">GUARDAR COTIZACION</button>
+                    <button class="guardar-cotizacion-btn" type="submit">GUARDAR COTIZACION</button>
                 </div>
             </div>
         </form>
@@ -178,14 +178,25 @@ export default {
 <style scoped>
 
 .cotizar-btn {
-    background-color: #03509c;
-    color: azure;
-    padding: 10px 20px;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    background-color: azure; /* Color de fondo */
+    color: #03509c; /* Color del texto */
+    padding: 12px 24px; /* Espaciado interno */
+    cursor: pointer; /* Cursor al pasar el mouse */
+    display: flex; /* Mostrar como flexbox */
+    justify-content: center; /* Centrar horizontalmente */
+    align-items: center; /* Centrar verticalmente */
+    border: 2px solid #03509c; /* Borde de 2px sólido con color #03509c */
+    border-radius: 10px; /* Bordes redondeados */
+    transition: all 0.3s ease; /* Transición suave al cambiar propiedades */
+    font-size: 16px; /* Tamaño de la fuente */
 }
+
+.cotizar-btn:hover {
+    background-color: #024280; /* Color de fondo al pasar el mouse */
+    color: azure; /* Color del texto al pasar el mouse */
+}
+
+
 
 .text-primary {
     color: #f44242;
@@ -223,4 +234,25 @@ export default {
 .mt-3 {
     margin-top: 3rem;
 }
+
+.guardar-cotizacion-btn {
+    background-color: #FFDE59;
+    color: #03509c;
+    padding: 10px 20px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #03509c;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    font-weight: bold;
+}
+
+.guardar-cotizacion-btn:hover {
+    background-color: #ffd736;
+    color: #024280;
+}
+
+
 </style>
