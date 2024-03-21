@@ -11,7 +11,7 @@ Route::get('/', function () {
     return Inertia::render('Welcome');
 })->name('home');
 
-Route::get('/dashboard', [CotizacionController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [CotizacionController::class, 'cotizador'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -23,6 +23,12 @@ Route::middleware('auth')->group(function () {
 
     /* Productos */
     Route::resource('admin/productos', ProductsController::class);
+
+    /* Cotizaciones */
+    Route::get('/cotizaciones', [CotizacionController::class, 'index'])->name('cotizaciones');
+    Route::get('/mis-cotizaciones', [CotizacionController::class, 'misCotizaciones'])->name('cotizaciones.user');
+    Route::post('/cotizaciones', [CotizacionController::class, 'store'])->name('cotizaciones.store');
+    Route::delete('/cotizaciones/{cotizacion}', [CotizacionController::class, 'destroy'])->name('cotizaciones.destroy');
 
 });
 

@@ -2,7 +2,7 @@
     <AuthenticatedLayout>
         <template #header>
             <div class="bg-primary-dark text-white p-4 rounded-lg mb-4">
-                <h2 class="font-bold text-2xl leading-tight text-yellow-500">TODAS LAS COTIZACIONES DE CLIENTES</h2>
+                <h2 class="font-bold text-2xl leading-tight text-yellow-500">MIS COTIZACIONES</h2>
             </div>
         </template>
 
@@ -64,4 +64,3 @@ export default {
     background-color: #80B9FF; /* Azul */
 }
 </style>
-

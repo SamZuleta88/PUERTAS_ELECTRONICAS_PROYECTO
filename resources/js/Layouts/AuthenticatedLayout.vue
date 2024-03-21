@@ -39,6 +39,16 @@ const showingNavigationDropdown = ref(false);
                                 </NavLink>
                             </div>
                             <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                                <NavLink :href="route('cotizaciones.user')" :active="route().current('cotizaciones.user')">
+                                    MIS COTIZADOR
+                                </NavLink>
+                            </div>
+                            <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                                <NavLink :href="route('cotizaciones')" :active="route().current('cotizaciones')">
+                                    COTIZACIONES CLIENTES
+                                </NavLink>
+                            </div>
+                            <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                                 <NavLink :href="route('materiales.index')" :active="route().current('materiales.index')">
                                     MATERIALES
                                 </NavLink>

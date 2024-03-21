@@ -7,7 +7,7 @@
             </div>
         </template>
 
-        <div class="py-12">
+        <form @submit.prevent="submit" class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="flex flex-col gap-4">
                     <div class="flex gap-4">
@@ -26,7 +26,7 @@
                             <label for="alto" class="block font-semibold text-sm text-gray-700">Alto</label>
                             <input type="number" v-model="form.alto" id="alto" placeholder="Alto" class="block w-full mt-1 border border-secondary rounded-lg focus:outline-none focus:ring focus:border-primary">
                         </div>
-                        <button @click="calcularTotales()">Cotizar</button>
+                        <span class="cotizar-btn" @click="calcularTotales()">Cotizar</span>
                     </div>
 
                     <div class="bg-primary-light text-white p-4 rounded-lg shadow-md">
@@ -54,8 +54,11 @@
                         </div>
                     </div>
                 </div>
+                <div class="pt-3">
+                    <button class="cotizar-btn" type="submit">GUARDAR COTIZACION</button>
+                </div>
             </div>
-        </div>
+        </form>
     </AuthenticatedLayout>
 </template>
 
@@ -143,12 +146,47 @@ export default {
 
             }
 
-        }
+        },
+
+        submit() {
+            this.form.post(route('cotizaciones.store'), {
+                preserveScroll: true,
+                onSuccess: () => this.form.reset(),
+                onError: () => {
+                    if (this.form.errors.producto) {
+                        this.form.reset('producto');
+                    }
+                    if (this.form.errors.ancho) {
+                        this.form.reset('ancho');
+                    }
+                    if (this.form.errors.alto) {
+                        this.form.reset('alto');
+                    }
+                    if (this.form.errors.total) {
+                        this.form.reset('total');
+                    }
+                    if (this.form.errors.detalles) {
+                        this.form.reset('detalles');
+                    }
+                },
+            });
+        },
     }
 }
 </script>
 
 <style>
+
+.cotizar-btn {
+    background-color: #03509c;
+    color: azure;
+    padding: 10px 20px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .text-primary {
     color: #f44242;
 }
@@ -180,5 +218,9 @@ export default {
 
 .bg-primary-light {
     background-color: #80B9FF; /* Azul */
+}
+
+.mt-3 {
+    margin-top: 3rem;
 }
 </style>
