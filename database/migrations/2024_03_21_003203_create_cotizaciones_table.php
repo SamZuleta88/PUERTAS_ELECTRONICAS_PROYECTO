@@ -17,7 +17,7 @@ return new class extends Migration
             $table->unsignedBigInteger('producto_id');
             $table->float('ancho');
             $table->float('alto');
-            $table->float('total');
+            $table->float('total', 15, 2);
             $table->unsignedBigInteger('user_id');
 
             $table->foreign('producto_id')->references('id')->on('productos')->onDelete('cascade');

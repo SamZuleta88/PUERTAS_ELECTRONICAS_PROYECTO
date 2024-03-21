@@ -87,5 +87,11 @@ tbody tr:hover {
     background-color: #0056b3;
 }
 
-/* FIN INDEX */ 
+.loginses {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* FIN INDEX */
 

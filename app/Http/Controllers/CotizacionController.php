@@ -20,14 +20,14 @@ class CotizacionController extends Controller
 
     public function index() {
 
-        $cotizaciones = Cotizacion::with('detalles', 'user')->get();
+        $cotizaciones = Cotizacion::with('user', 'producto', 'detalles')->get();
         return Inertia::render('Cotizaciones', compact('cotizaciones'));
 
     }
 
     public function misCotizaciones() {
 
-        $cotizaciones = Cotizacion::with('detalles', 'user')->where('user_id', auth()->user()->id)->get();
+        $cotizaciones = Cotizacion::with('user', 'producto', 'detalles')->where('user_id', auth()->user()->id)->get();
         return Inertia::render('MisCotizaciones', compact('cotizaciones'));
 
     }
@@ -63,5 +63,10 @@ class CotizacionController extends Controller
 
         return redirect()->route('dashboard')->with('success', 'Cotizacion guardada con exito con exito.');
 
+    }
+
+    public function destroy(Cotizacion $cotizacion)
+    {
+        $cotizacion->delete();
     }
 }

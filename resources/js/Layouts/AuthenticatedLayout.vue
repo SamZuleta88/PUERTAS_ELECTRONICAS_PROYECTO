@@ -33,27 +33,27 @@ const showingNavigationDropdown = ref(false);
                                     INICIO
                                 </NavLink>
                             </div>
-                            <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                            <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex" v-if="$page.props.auth.user">
                                 <NavLink :href="route('dashboard')" :active="route().current('dashboard')">
                                     COTIZADOR
                                 </NavLink>
                             </div>
-                            <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                            <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex" v-if="$page.props.auth.user">
                                 <NavLink :href="route('cotizaciones.user')" :active="route().current('cotizaciones.user')">
                                     MIS COTIZADOR
                                 </NavLink>
                             </div>
-                            <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                            <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex" v-if="$page.props.auth.user && $page.props.auth.user.role === 1">
                                 <NavLink :href="route('cotizaciones')" :active="route().current('cotizaciones')">
-                                    COTIZACIONES CLIENTES
+                                    COTIZACIONES DE CLIENTES
                                 </NavLink>
                             </div>
-                            <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                            <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex" v-if="$page.props.auth.user && $page.props.auth.user.role === 1">
                                 <NavLink :href="route('materiales.index')" :active="route().current('materiales.index')">
                                     MATERIALES
                                 </NavLink>
                             </div>
-                            <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                            <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex" v-if="$page.props.auth.user && $page.props.auth.user.role === 1">
                                 <NavLink :href="route('productos.index')" :active="route().current('productos.index')">
                                     PRODUCTOS
                                 </NavLink>
@@ -98,7 +98,7 @@ const showingNavigationDropdown = ref(false);
                             </div>
                         </div>
 
-                        <div v-else>
+                        <div v-else class="loginses">
                             <Link
                                 :href="route('login')"
                                 class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->unsignedBigInteger('cotizacion_id');
             $table->string('material');
             $table->string('formula');
-            $table->float('total');
+            $table->float('total', 15, 2);
 
             $table->foreign('cotizacion_id')->references('id')->on('cotizaciones')->onDelete('cascade');
 
