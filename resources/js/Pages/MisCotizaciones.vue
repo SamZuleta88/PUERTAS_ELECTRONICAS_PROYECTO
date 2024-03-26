@@ -11,7 +11,7 @@
                 <thead>
                     <th>id</th>
                     <th>Producto</th>
-                    <th>Acho</th>
+                    <th>Ancho</th>
                     <th>Alto</th>
                     <th>Total</th>
                     <th>Detalles</th>
