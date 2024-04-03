@@ -3,7 +3,7 @@
         <template #header>
             <div class="bg-primary-dark text-white p-4 rounded-lg mb-4">
                 <h2 class="font-bold text-2xl leading-tight text-yellow-500">PUERTAS ELECTRÓNICAS</h2>
-                <h6 class="font-bold text-lg leading-tight">Fabricamos - Instalamos - Automatizamos.</h6>
+                <h6 class="font-bold text-lg leading-tight">Fabricamoss - Instalamos - Automatizamos.</h6>
             </div>
         </template>
 
