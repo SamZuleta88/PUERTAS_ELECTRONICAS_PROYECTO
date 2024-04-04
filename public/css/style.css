@@ -8,7 +8,7 @@
         height: 100%; /* Mantiene la proporción de aspecto */
       }
       h2.text-yellow-500 {
-        color: #FFFF99 !important; /* Amarillo claro */
+        color: #FFFF98 !important; /* Amarillo claro */
     }
 
 
@@ -19,7 +19,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 10px;
-    background-color: #f2f2f2;
+    background-color: #f2f2f3;
     border-bottom: 1px solid #ccc;
 }
 
@@ -30,7 +30,7 @@
 
 .admin-header button {
     padding: 8px 16px;
-    background-color: #007bff;
+    background-color: #008bff;
     color: white;
     border: none;
     border-radius: 5px;
@@ -39,7 +39,7 @@
 }
 
 .admin-header button:hover {
-    background-color: #0056b3;
+    background-color: #0056b4;
 }
 
 /* Tabla */
