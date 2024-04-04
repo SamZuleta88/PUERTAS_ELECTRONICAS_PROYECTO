@@ -107,7 +107,7 @@ export default {
 }
 
 .bg-primary-dark {
-    background-color: #03509c; /* Azul oscuro */
+    background-color: #03509c; /* Azul oscuro *//* Azul oscuro *//* Azul oscuro */
 }
 
 .bg-primary-light {
