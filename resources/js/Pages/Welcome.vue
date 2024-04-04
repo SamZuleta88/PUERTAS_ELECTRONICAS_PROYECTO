@@ -9,13 +9,13 @@
               <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
             </div>
             <div class="carousel-inner">
-              <div class="carousel-item active" data-bs-interval="5000">
+              <div class="carousel-item active" data-bs-interval="4000">
                 <img src="../images/CARRUSEL-1.jpg" alt="#">
               </div>
-              <div class="carousel-item" data-bs-interval="5000">
+              <div class="carousel-item" data-bs-interval="4000">
                 <img src="../images/CARRUSEL-2.jpg" alt="#">
               </div>
-              <div class="carousel-item" data-bs-interval="5000">
+              <div class="carousel-item" data-bs-interval="4000">
                 <img src="../images/CARRUSEL-3.jpg" alt="#">
               </div>
             </div>
