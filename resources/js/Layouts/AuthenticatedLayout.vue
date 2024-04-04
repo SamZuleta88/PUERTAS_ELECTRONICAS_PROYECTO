@@ -161,7 +161,7 @@ const showingNavigationDropdown = ref(false);
                         <!-- <div class="px-4">
                             <div class="font-medium text-base text-gray-800">
                                 {{ $page.props.auth.user.name }}
-                            </div>asdasdasdasdasadsadasdasdasdasdasdas
+                            </div>
                             <div class="font-medium text-sm text-gray-500">{{ $page.props.auth.user.email }}</div>
                         </div> -->
 
