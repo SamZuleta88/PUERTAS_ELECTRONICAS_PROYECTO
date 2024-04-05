@@ -4,6 +4,7 @@ use App\Http\Controllers\CotizacionController;
 use App\Http\Controllers\MaterialController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\ExportController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -29,6 +30,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/mis-cotizaciones', [CotizacionController::class, 'misCotizaciones'])->name('cotizaciones.user');
     Route::post('/cotizaciones', [CotizacionController::class, 'store'])->name('cotizaciones.store');
     Route::delete('/cotizaciones/{cotizacion}', [CotizacionController::class, 'destroy'])->name('cotizaciones.destroy');
+
+    /* USUARIOS Excel Exportaciones*/
+    Route::get('/users/export', [ExportController::class, 'users'])->name('users.export');
+
+    /* Cotizaciones PDF Impresión*/
+    Route::get('/cotizacion/pdf/{cotizacion}', [ExportController::class, 'DescargarPDF'])->name('cotizacion.pdf');
 
 });
 

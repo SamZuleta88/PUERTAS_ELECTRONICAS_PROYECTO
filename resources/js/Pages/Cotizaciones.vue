@@ -2,10 +2,12 @@
     <AuthenticatedLayout>
         <template #header>
             <div class="bg-primary-dark text-white p-4 rounded-lg mb-4">
-                <h2 class="font-bold text-2xl leading-tight text-yellow-500">TODAS LAS COTIZACIONES DE CLIENTES</h2>
+                <h2 class="font-bold text-2xl leading-tight text-yellow-500">COTIZACIONES GLOBALES</h2>
             </div>
         </template>
-
+        <div>
+            <a :href="route('users.export')">Descargar Informe de Clientes Registrados</a>
+        </div>
         <div class="py-12">
             <table>
                 <thead>

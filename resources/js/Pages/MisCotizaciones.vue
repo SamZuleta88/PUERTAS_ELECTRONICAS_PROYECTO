@@ -15,6 +15,7 @@
                     <th>Alto</th>
                     <th>Total</th>
                     <th>Detalles</th>
+                    <th>PDF</th>
                     <th>actions</th>
                 </thead>
                 <tbody>
@@ -29,6 +30,7 @@
                                 <ol v-for="detalle in cotizacion.detalles">{{ detalle.material }}: <b>${{ formatoPuntos(detalle.total) }}</b></ol>
                             </ul>
                         </td>
+                        <td><a :href="route('cotizacion.pdf',cotizacion)">Descargar PDF</a></td>
                         <td>
                         <div class="button-container">
                             <button @click="eliminarCotizacion(cotizacion)" class="delete-button">Eliminar</button>
