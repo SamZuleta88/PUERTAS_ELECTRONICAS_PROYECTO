@@ -1,17 +1,18 @@
 <template>
-
     <AuthenticatedLayout>
-        <div>
-            <h2>Crear Material</h2>
-            <Link :href="route('materiales.index')">
-                <button>Regresar</button>
-            </Link>
-        </div>
-        <form @submit.prevent="submit">
-            <div class="space-y-6">
-                <div>
-                    <InputLabel for="nombre" value="nombre" />
-
+        <br>
+        <br>
+        <br>
+        <div class="form-container">
+            <div class="form-header">
+                <h2 class="form-title">Crear Material</h2>
+                <Link :href="route('materiales.index')">
+                    <button class="back-button">Regresar</button>
+                </Link>
+            </div>
+            <form @submit.prevent="submit" class="form">
+                <div class="form-field">
+                    <InputLabel for="nombre" value="Nombre" />
                     <TextInput
                         id="nombre"
                         ref="nombreInput"
@@ -20,16 +21,10 @@
                         class="block w-full"
                         autocomplete="nombre-input"
                     />
-
                     <InputError :message="form.errors.nombre" class="mt-2" />
                 </div>
-
-            </div>
-
-            <div class="space-y-6">
-                <div>
-                    <InputLabel for="valor" value="valor" />
-
+                <div class="form-field">
+                    <InputLabel for="valor" value="Valor" />
                     <TextInput
                         id="valor"
                         ref="valorInput"
@@ -38,22 +33,10 @@
                         class="block w-full"
                         autocomplete="valor-input"
                     />
-
                     <InputError :message="form.errors.valor" class="mt-2" />
                 </div>
-
-            </div>
-
-            <p>
-
-                El Ancho se representa con una <b>A</b>
-                El Alto se representa con una  <b>B</b>
-
-            </p>
-            <div class="space-y-6">
-                <div>
-                    <InputLabel for="formula" value="Formula del matrial segun el metraje" />
-
+                <div class="form-field">
+                    <InputLabel for="formula" value="Formula del material segun el metraje" />
                     <TextInput
                         id="formula"
                         ref="formulaInput"
@@ -62,22 +45,22 @@
                         class="block w-full"
                         autocomplete="formula-input"
                     />
-
                     <InputError :message="form.errors.formula" class="mt-2" />
                 </div>
-
-            </div>
-
-            <div class="omt-8">
-                <button type="submit" class="basic-succes-btn">CREAR MATERIAL</button>
-            </div>
-        </form>
+                <p class="form-hint">
+                    El Ancho se representa con una <b>A</b>
+                    El Alto se representa con una <b>B</b>
+                </p>
+                <br>
+                <div>
+                    <button type="submit" class="submit-button">CREAR MATERIAL</button>
+                </div>
+            </form>
+        </div>
     </AuthenticatedLayout>
-
 </template>
 
 <script>
-
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Link } from '@inertiajs/vue3';
 import InputError from '@/Components/InputError.vue';
@@ -86,7 +69,6 @@ import TextInput from '@/Components/TextInput.vue';
 import { useForm } from '@inertiajs/vue3';
 
 export default {
-
     components: {
         AuthenticatedLayout,
         Link,
@@ -94,7 +76,6 @@ export default {
         InputLabel,
         TextInput,
     },
-
     data() {
         return {
             form: useForm({
@@ -104,7 +85,6 @@ export default {
             })
         };
     },
-
     methods: {
         submit() {
             this.form.post(route('materiales.store'), {
@@ -125,26 +105,29 @@ export default {
         },
     },
 }
-
 </script>
 
-<style>
-/* Encabezado */
-.admin-header {
+<style scoped>
+.form-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+}
+.form-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px;
-    background-color: #f2f2f2;
-    border-bottom: 1px solid #ccc;
+    margin-bottom: 20px;
 }
-
-.admin-header h2 {
+.form-title {
     margin: 0;
     font-size: 24px;
+    color: #333;
 }
-
-.admin-header button {
+.back-button {
     padding: 8px 16px;
     background-color: #007bff;
     color: white;
@@ -153,55 +136,32 @@ export default {
     cursor: pointer;
     transition: background-color 0.3s;
 }
-
-.admin-header button:hover {
+.back-button:hover {
     background-color: #0056b3;
 }
-
-/* Tabla */
-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-th, td {
-    border: 1px solid #ddd;
-    padding: 10px;
-    text-align: left;
-}
-
-th {
-    background-color: #f2f2f2;
-}
-
-tbody tr:nth-child(even) {
-    background-color: #f9f9f9;
-}
-
-tbody tr:hover {
-    background-color: #f0f0f0;
-}
-
-/* Botones */
-.button-container {
+.form {
     display: flex;
+    flex-direction: column;
     align-items: center;
 }
-
-.edit-button,
-.delete-button {
+.form-field {
+    margin-bottom: 20px;
+    width: 100%;
+}
+.form-hint {
+    margin-top: 10px;
+    color: #666;
+}
+.submit-button {
     padding: 8px 16px;
-    background-color: #007bff;
+    background-color: #28a745;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    margin-right: 5px;
     transition: background-color 0.3s;
 }
-
-.edit-button:hover,
-.delete-button:hover {
-    background-color: #0056b3;
+.submit-button:hover {
+    background-color: #218838;
 }
 </style>

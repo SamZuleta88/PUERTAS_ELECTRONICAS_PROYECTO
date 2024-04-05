@@ -5,6 +5,7 @@
                 <h2 class="font-bold text-2xl leading-tight text-yellow-500">COTIZACIONES GLOBALES</h2>
             </div>
         </template>
+        <br>
         <div>
             <a :href="route('users.export')" style="display: inline-block; padding: 10px 20px; background-color: #80B9FF; color: #FFFFFF; text-decoration: none; border-radius: 5px;">Descargar Informe de Clientes Registrados</a>
         </div>

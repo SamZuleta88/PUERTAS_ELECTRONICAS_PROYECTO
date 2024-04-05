@@ -1,17 +1,16 @@
 <template>
-
     <AuthenticatedLayout>
-        <div>
-            <h2>Crear Material</h2>
-            <Link :href="route('materiales.index')">
-                <button>Regresar</button>
-            </Link>
-        </div>
-        <form @submit.prevent="submit">
-            <div class="space-y-6">
-                <div>
-                    <InputLabel for="nombre" value="nombre" />
-
+        <br><br><br>
+        <div class="form-container">
+            <div class="form-header">
+                <h2 class="form-title">Crear Producto</h2>
+                <Link :href="route('productos.index')">
+                    <button class="back-button">Regresar</button>
+                </Link>
+            </div>
+            <form @submit.prevent="submit" class="form">
+                <div class="form-field">
+                    <InputLabel for="nombre" value="Nombre" />
                     <TextInput
                         id="nombre"
                         ref="nombreInput"
@@ -20,32 +19,26 @@
                         class="block w-full"
                         autocomplete="nombre-input"
                     />
-
                     <InputError :message="form.errors.nombre" class="mt-2" />
                 </div>
-
-            </div>
-            <div class="my-4 mt-6">
-                <label for="imagen" class="basic-fouth-btn ">Subir imagen</label>
-                <input type="file" id="imagen" name="imagen" hidden
-                    @input="form.imagen = $event.target.files[0]"/>
-            </div>
-            <div class="space-y-6">
-                <label class="typo__label">Materiale(s) *</label>
-                <multiselect
-                    v-model="form.materiales"
-                    tag-placeholder="Add this as new tag"
-                    placeholder="Search or add a tag"
-                    label="nombre" track-by="id"
-                    :options="materiales"
-                    :multiple="true"
-                    :taggable="true">
-                </multiselect>
-            </div>
-            <div class="space-y-6">
-                <div>
-                    <InputLabel for="descripcion" value="descripcion" />
-
+                <div class="form-field">
+                    <label for="imagen" class="file-upload">Subir imagen</label>
+                    <input type="file" id="imagen" name="imagen" hidden @change="form.imagen = $event.target.files[0]"/>
+                </div>
+                <div class="form-field">
+                    <label class="typo__label">Materiale(s) *</label>
+                    <multiselect
+                        v-model="form.materiales"
+                        tag-placeholder="Agregar nuevo tag"
+                        placeholder="Buscar o agregar un tag"
+                        label="nombre" track-by="id"
+                        :options="materiales"
+                        :multiple="true"
+                        :taggable="true">
+                    </multiselect>
+                </div>
+                <div class="form-field">
+                    <InputLabel for="descripcion" value="Descripcion" />
                     <TextInput
                         id="descripcion"
                         ref="descripcionInput"
@@ -54,14 +47,10 @@
                         class="block w-full"
                         autocomplete="descripcion-input"
                     />
-
                     <InputError :message="form.errors.descripcion" class="mt-2" />
                 </div>
-            </div>
-            <div class="space-y-6">
-                <div>
-                    <InputLabel for="mano_de_obra" value="mano_de_obra" />
-
+                <div class="form-field">
+                    <InputLabel for="mano_de_obra" value="Mano de obra" />
                     <TextInput
                         id="mano_de_obra"
                         ref="mano_de_obraInput"
@@ -70,21 +59,17 @@
                         class="block w-full"
                         autocomplete="mano_de_obra-input"
                     />
-
                     <InputError :message="form.errors.mano_de_obra" class="mt-2" />
                 </div>
-            </div>
-
-            <div class="omt-8">
-                <button type="submit" class="basic-succes-btn">CREAR MATERIAL</button>
-            </div>
-        </form>
+                <div>
+                    <button type="submit" class="submit-button">CREAR PRODUCTO</button>
+                </div>
+            </form>
+        </div>
     </AuthenticatedLayout>
-
 </template>
 
 <script>
-
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import { Link } from '@inertiajs/vue3';
 import Multiselect from 'vue-multiselect'
@@ -94,7 +79,6 @@ import TextInput from '@/Components/TextInput.vue';
 import { useForm } from '@inertiajs/vue3';
 
 export default {
-
     components: {
         AuthenticatedLayout,
         Link,
@@ -103,11 +87,9 @@ export default {
         TextInput,
         Multiselect,
     },
-
     props: {
         materiales: Object,
     },
-
     data() {
         return {
             form: useForm({
@@ -119,7 +101,6 @@ export default {
             })
         };
     },
-
     methods: {
         submit() {
             this.form.post(route('productos.store'), {
@@ -146,27 +127,29 @@ export default {
         },
     },
 }
-
 </script>
 
-
-<style>
-/* Encabezado */
-.admin-header {
+<style scoped>
+.form-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+}
+.form-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px;
-    background-color: #f2f2f2;
-    border-bottom: 1px solid #ccc;
+    margin-bottom: 20px;
 }
-
-.admin-header h2 {
+.form-title {
     margin: 0;
     font-size: 24px;
+    color: #333;
 }
-
-.admin-header button {
+.back-button {
     padding: 8px 16px;
     background-color: #007bff;
     color: white;
@@ -175,55 +158,46 @@ export default {
     cursor: pointer;
     transition: background-color 0.3s;
 }
-
-.admin-header button:hover {
+.back-button:hover {
     background-color: #0056b3;
 }
-
-/* Tabla */
-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-th, td {
-    border: 1px solid #ddd;
-    padding: 10px;
-    text-align: left;
-}
-
-th {
-    background-color: #f2f2f2;
-}
-
-tbody tr:nth-child(even) {
-    background-color: #f9f9f9;
-}
-
-tbody tr:hover {
-    background-color: #f0f0f0;
-}
-
-/* Botones */
-.button-container {
+.form {
     display: flex;
+    flex-direction: column;
     align-items: center;
 }
-
-.edit-button,
-.delete-button {
+.form-field {
+    margin-bottom: 20px;
+    width: 100%;
+}
+.typo__label {
+    margin-bottom: 8px;
+    color: #333;
+    font-weight: bold;
+    font-size: 14px;
+}
+.file-upload {
     padding: 8px 16px;
     background-color: #007bff;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    margin-right: 5px;
     transition: background-color 0.3s;
 }
-
-.edit-button:hover,
-.delete-button:hover {
+.file-upload:hover {
     background-color: #0056b3;
+}
+.submit-button {
+    padding: 8px 16px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.submit-button:hover {
+    background-color: #218838;
 }
 </style>

@@ -4,7 +4,7 @@
         <div class="admin-header">
             <h2>PRODUCTOS</h2>
             <Link :href="route('productos.create')">
-                <button class="basic-succes-btn">Crear Producto</button>
+                <button class="basic-succes-btn">CREAR PRODUCTO</button>
             </Link>
         </div>
 
