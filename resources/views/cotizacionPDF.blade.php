@@ -6,42 +6,38 @@
     <title>COTIZACION</title>
 </head>
 <body>
+<div style="text-align: center; background-color: #FDBD01; border-radius: 10px; border: 1px solid #000; margin: -1px 60px;">
+    <h1 style="color: #1F365C;">PUERTAS ELECTRÓNICAS</h1>
+    <h3 style="color: #1F365C;">Fabricamos - Automatizamos - Instalamos</h3>
+</div>
+
+
+
+
     <div class="container">
-        <h1>Cotización</h1>
-        <table>
-            <tr>
-                <th>Producto</th>
-                <td>{{$cotizacion->producto->nombre}}</td>
-            </tr>
-            <tr>
-                <th>Dimensiones</th>
-                <td>{{$cotizacion->ancho}}m x {{$cotizacion->alto}}m</td>
-            </tr>
-            <tr>
-                <th>Total</th>
-                <td>${{number_format($cotizacion->total, 2)}}</td>
-            </tr>
-        </table>
-        
-        <h2>Detalles</h2>
-        <table>
-            <tr>
-                <th>Material</th>
-                <th>Formula</th>
-                <th>Total</th>
-            </tr>
-            @foreach ($cotizacion->detalles as $detalle)
-            <tr>
-                <td>{{$detalle->material}}</td>
-                <td>{{$detalle->formula}}</td>
-                <td>${{number_format($detalle->total, 2)}}</td>
-            </tr>
-            @endforeach
-        </table>
-        
-        <h2>Usuario</h2>
-        <p>Nombre: {{$cotizacion->user->name}}</p>
-        <p>Email: {{$cotizacion->user->email}}</p>
+
+        <p>itagüí, {{ \Carbon\Carbon::now()->format('d \d\e F \d\e Y') }}</p>
+        <p>Señor: {{ $cotizacion->user->name }}</p>
+
+        <h3>ASUNTO: COTIZACIÓN</h3>
+
+        <p>Cordial saludo,</p>
+        <p>Me permito enviar cotización de:</p>
+        <p>{{ $cotizacion->producto->nombre }}, {{ $cotizacion->ancho }}m x {{ $cotizacion->alto }}m.</p>
+
+        <h3>VALOR TOTAL COTIZACIÓN: ${{ number_format($cotizacion->total, 2) }}</h3>
+
+        <h3>CONDICIONES COMERCIALES</h3>
+        <ul>
+            <li>- Esta cotización tiene una validez de: 8 Días</li>
+            <li>- Tiempo de entrega a convenir.</li>
+            <li>- Forma de pago: 60 % en el momento de aprobar cotización, 40 % al entregarlas debidamente instaladas y a plena satisfacción.</li>
+        </ul>
+
+        <p>Favor consignar en cuenta de ahorros Bancolombia N° 91959714725. Cualquier Información adicional, estaremos gustosos de atenderle.</p>
+
+        <p>Atentamente,</p>
+        <p>Luis Aníbal Zuleta G. <br> Gerente General</p>
     </div>
 
     <style>
@@ -50,23 +46,21 @@
             margin: 0;
             padding: 0;
         }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 20px;
-        }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: left;
-        }
-        th {
-            background-color: #f2f2f2;
-        }
         .container {
             max-width: 800px;
             margin: 0 auto;
             padding: 20px;
+        }
+        h1, h2, h3, p {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 10px;
         }
     </style>
 </body>
