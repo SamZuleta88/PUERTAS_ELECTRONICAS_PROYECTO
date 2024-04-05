@@ -6,8 +6,9 @@
             </div>
         </template>
         <div>
-            <a :href="route('users.export')">Descargar Informe de Clientes Registrados</a>
+            <a :href="route('users.export')" style="display: inline-block; padding: 10px 20px; background-color: #80B9FF; color: #FFFFFF; text-decoration: none; border-radius: 5px;">Descargar Informe de Clientes Registrados</a>
         </div>
+
         <div class="py-12">
             <table>
                 <thead>
